@@ -2,17 +2,17 @@
   "name": "quiz-game-moah",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "dependencies": {
-    "parcel": "^2.0.0-beta.2"
-  },
-  "devDependencies": {
-    "parcel-bundler": "^1.12.5",
+    "parcel": "^2.0.0-beta.2",
     "sass": "^1.32.8"
   },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
+  },
   "scripts": {
-    "start": "parcel serve src/index.html",
-    "build": "parcel build src/index.html"
+    "start": "parcel serve ./src/index.html",
+    "build": "parcel build ./src/index.html"
   },
   "repository": {
     "type": "git",
