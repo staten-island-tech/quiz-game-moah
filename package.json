@@ -1,0 +1,28 @@
+{
+  "name": "quiz-game-moah",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "parcel": "^2.0.0-beta.2"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5",
+    "sass": "^1.32.8"
+  },
+  "scripts": {
+    "start": "parcel serve src/index.html",
+    "build": "parcel build src/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/staten-island-tech/quiz-game-moah.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/staten-island-tech/quiz-game-moah/issues"
+  },
+  "homepage": "https://github.com/staten-island-tech/quiz-game-moah#readme"
+}
