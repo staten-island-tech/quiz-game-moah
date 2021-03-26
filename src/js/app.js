@@ -1,6 +1,6 @@
 console.log("Connected");
 
-[
+const questions = [
   {
     questionContent: "Are you more independent or dependent?",
     choices: [
