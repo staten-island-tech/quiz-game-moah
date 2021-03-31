@@ -1,5 +1,9 @@
 console.log("Connected");
 
+DOMSelectors = {
+  displayContainer: document.querySelector(),
+};
+
 const questions = [
   {
     questionContent: "Are you more independent or dependent?",
