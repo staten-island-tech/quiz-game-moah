@@ -176,3 +176,9 @@ const questions = [
     ],
   },
 ];
+
+const init = function () {
+  const displayItems = menu.forEach(
+    (filler) => DOMSelectors.displayContainer.insertAdjacentHTML
+  );
+};
