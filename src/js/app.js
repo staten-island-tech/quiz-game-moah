@@ -1,19 +1,22 @@
-console.log("Connected");
-
-DOMSelectors = {
-  displayContainer: document.querySelector(),
-};
+const quizContainer = document.getElementsByClassName("container");
+const start = document.getElementById("start");
+const question = document.getElementById("question");
+const choiceA = document.getElementById("A");
+const choiceB = document.getElementById("B");
+const choiceC = document.getElementById("C");
+const scoreContainer = document.getElementById("scoreContainer");
+console.log(quizContainer);
 
 const questions = [
   {
     questionContent: "Are you more independent or dependent?",
     choices: [
       {
-        choice: "Independent",
+        choice1: "Independent",
         value: 1,
       },
       {
-        choice: "Dependent",
+        choice2: "Dependent",
         value: 0,
       },
     ],
@@ -22,15 +25,15 @@ const questions = [
     questionContent: "What is your favorite food?",
     choices: [
       {
-        choice: "Gravy",
+        choice1: "Gravy",
         value: 1,
       },
       {
-        choice: "Steak",
+        choice2: "Steak",
         value: 3,
       },
       {
-        choice: "Rice",
+        choice3: "Rice",
         value: 5,
       },
     ],
@@ -39,15 +42,15 @@ const questions = [
     questionContent: "What is your favorite color out of these three?",
     choices: [
       {
-        choice: "Blue",
+        choice1: "Blue",
         value: 5,
       },
       {
-        choice: "Red",
+        choice2: "Red",
         value: 1,
       },
       {
-        choice: "Yellow",
+        choice3: "Yellow",
         value: 3,
       },
     ],
@@ -56,15 +59,15 @@ const questions = [
     questionContent: "When confronted with danger I...",
     choices: [
       {
-        choice: "Listen to music",
+        choice1: "Listen to music",
         value: 5,
       },
       {
-        choice: "Talk it out",
+        choice2: "Talk it out",
         value: 3,
       },
       {
-        choice: "Drive away",
+        choice3: "Drive away",
         value: 1,
       },
     ],
@@ -73,20 +76,16 @@ const questions = [
     questionContent: "What is your favorite season?",
     choices: [
       {
-        choice: "Summer",
+        choice1: "Summer",
         value: 5,
       },
       {
-        choice: "Spring",
+        choice2: "Spring",
         value: 3,
       },
       {
-        choice: "Fall",
+        choice3: "Fall",
         value: 1,
-      },
-      {
-        choice: "Winter",
-        value: 0,
       },
     ],
   },
@@ -94,15 +93,15 @@ const questions = [
     questionContent: "The most important quality in a person is:",
     choices: [
       {
-        choice: "Honesty",
+        choice1: "Honesty",
         value: 5,
       },
       {
-        choice: "Bravery",
+        choice2: "Bravery",
         value: 3,
       },
       {
-        choice: "Respect",
+        choice3: "Respect",
         value: 1,
       },
     ],
@@ -111,15 +110,15 @@ const questions = [
     questionContent: "My preferred method of transport is:",
     choices: [
       {
-        choice: "Plane",
+        choice1: "Plane",
         value: 5,
       },
       {
-        choice: "Walking",
+        choice2: "Walking",
         value: 3,
       },
       {
-        choice: "Car",
+        choice3: "Car",
         value: 1,
       },
     ],
@@ -128,15 +127,15 @@ const questions = [
     questionContent: "I'd like to visit:",
     choices: [
       {
-        choice: "Saudi Arabia",
+        choice1: "Saudi Arabia",
         value: 5,
       },
       {
-        choice: "Africa",
+        choice2: "Africa",
         value: 3,
       },
       {
-        choice: "Arizona",
+        choice3: "Arizona",
         value: 1,
       },
     ],
@@ -145,15 +144,15 @@ const questions = [
     questionContent: "What do you like to do in your free time:",
     choices: [
       {
-        choice: "Play with my pets",
+        choice1: "Play with my pets",
         value: 5,
       },
       {
-        choice: "Hang out with friends",
+        choice2: "Hang out with friends",
         value: 3,
       },
       {
-        choice: "Go for a nice drive",
+        choice3: "Go for a nice drive",
         value: 1,
       },
     ],
@@ -162,15 +161,15 @@ const questions = [
     questionContent: "Which of these outfits would you wear",
     choices: [
       {
-        choice: "Dress or Suit",
+        choice1: "Dress or Suit",
         value: 5,
       },
       {
-        choice: "Fuzzy sweater",
+        choice2: "Fuzzy sweater",
         value: 3,
       },
       {
-        choice: "A tracksuit",
+        choice3: "A tracksuit",
         value: 1,
       },
     ],
@@ -178,7 +177,22 @@ const questions = [
 ];
 
 const init = function () {
-  const displayItems = menu.forEach(
-    (filler) => DOMSelectors.displayContainer.insertAdjacentHTML
+  questions.forEach((question) =>
+    quizContainer.insertAdjacentHTML(
+      "beforeend",
+      `
+      <div id="question-container" class="hide">
+      <div id="question">${question.questionContent}</div>
+      <div id="answer-buttons" class="btn-grid">
+          <button class="first-choice btn">${question.choice1}</button>
+          <button class="second-choice btn">${question.choice2}</button>
+          <button class="third-choice btn">${question.choice3}</button>
+      </div>
+  </div>
+  <div class="controls">
+      <button id="next-btn" class="next-btn btn">Next</button>
+  `
+    )
   );
 };
+init();
