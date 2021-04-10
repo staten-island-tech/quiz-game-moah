@@ -10,6 +10,7 @@ body {
   background-image: url(../img/largedisneycastle.jpeg);
   background-size: cover;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  background-repeat: no-repeat;
 }
 #start {
   font-size: 5rem;
@@ -18,8 +19,11 @@ body {
   padding: 6rem;
   text-align: center;
   margin: 5rem auto;
+  transition: all 0.5s;
 }
 #start:hover {
+  filter: hue-rotate(120deg);
+  transform: scale(1.2);
 }
 #container {
   /* width: 800px;
@@ -46,12 +50,15 @@ body {
 }
 
 .btn {
+  transition: all 0.5s;
   background-color: white;
   border-radius: 1rem;
   padding: 1.5rem;
   font-size: 2rem;
 }
-
+.btn:hover {
+  transform: scale(1.2);
+}
 .controls {
   display: flex;
   justify-content: center;
