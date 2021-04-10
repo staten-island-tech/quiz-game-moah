@@ -5,194 +5,111 @@ const choiceA = document.getElementById("A");
 const choiceB = document.getElementById("B");
 const choiceC = document.getElementById("C");
 const scoreContainer = document.getElementById("scoreContainer");
-console.log(quizContainer);
+const qImg = document.getElementById("qImage");
+
+console.log(start);
 
 const questions = [
   {
-    questionContent: "Are you more independent or dependent?",
-    choices: [
-      {
-        choice1: "Independent",
-        value: 1,
-      },
-      {
-        choice2: "Dependent",
-        value: 0,
-      },
-    ],
+    questionContent: "What year did Disneyland open?",
+    choiceA: "1960",
+    choiceB: "1940",
+    choiceC: "1955",
+    correct: "C",
+    imgSrc: "",
   },
   {
-    questionContent: "What is your favorite food?",
-    choices: [
-      {
-        choice1: "Gravy",
-        value: 1,
-      },
-      {
-        choice2: "Steak",
-        value: 3,
-      },
-      {
-        choice3: "Rice",
-        value: 5,
-      },
-    ],
+    questionContent: "Who trained Hercules to be a hero?",
+    choiceA: "Phil/Philoctetes",
+    choiceB: "Grover",
+    choiceC: "Apollo",
+    correct: "A",
+    imgSrc: "",
   },
   {
-    questionContent: "What is your favorite color out of these three?",
-    choices: [
-      {
-        choice1: "Blue",
-        value: 5,
-      },
-      {
-        choice2: "Red",
-        value: 1,
-      },
-      {
-        choice3: "Yellow",
-        value: 3,
-      },
-    ],
+    questionContent: "What is the name of the toy store in Toy Story 2",
+    choiceA: "Al's Toy Barn",
+    choiceB: "Toys R Us",
+    choiceC: "Steve's Toy Shop",
+    correct: "A",
+    imgSrc: "",
   },
   {
-    questionContent: "When confronted with danger I...",
-    choices: [
-      {
-        choice1: "Listen to music",
-        value: 5,
-      },
-      {
-        choice2: "Talk it out",
-        value: 3,
-      },
-      {
-        choice3: "Drive away",
-        value: 1,
-      },
-    ],
+    questionContent: "What are the names of Hades minions in Hercules?",
+    choiceA: "Disgust and Contempt",
+    choiceB: "Anger and Anxiety",
+    choiceC: "Pain and Panic",
+    correct: "C",
+    imgSrc: "",
   },
   {
-    questionContent: "What is your favorite season?",
-    choices: [
-      {
-        choice1: "Summer",
-        value: 5,
-      },
-      {
-        choice2: "Spring",
-        value: 3,
-      },
-      {
-        choice3: "Fall",
-        value: 1,
-      },
-    ],
+    questionContent: "What is the name of Ariel and Prince Eric's daughter?",
+    choiceA: "Diana",
+    choiceB: "Melody",
+    choiceC: "Celeste",
+    correct: "B",
+    imgSrc: "",
   },
   {
-    questionContent: "The most important quality in a person is:",
-    choices: [
-      {
-        choice1: "Honesty",
-        value: 5,
-      },
-      {
-        choice2: "Bravery",
-        value: 3,
-      },
-      {
-        choice3: "Respect",
-        value: 1,
-      },
-    ],
+    questionContent:
+      "What's the name of Belle's father in 'Beauty and the Beast'?",
+    choiceA: "Timothy",
+    choiceB: "Diego",
+    choiceC: "Maurice",
+    correct: "C",
+    imgSrc: "",
   },
   {
-    questionContent: "My preferred method of transport is:",
-    choices: [
-      {
-        choice1: "Plane",
-        value: 5,
-      },
-      {
-        choice2: "Walking",
-        value: 3,
-      },
-      {
-        choice3: "Car",
-        value: 1,
-      },
-    ],
+    questionContent: "What animal was Tarzan raised by?",
+    choiceA: "Wolves",
+    choiceB: "Bears",
+    choiceC: "Gorillas",
+    correct: "C",
+    imgSrc: "",
   },
   {
-    questionContent: "I'd like to visit:",
-    choices: [
-      {
-        choice1: "Saudi Arabia",
-        value: 5,
-      },
-      {
-        choice2: "Africa",
-        value: 3,
-      },
-      {
-        choice3: "Arizona",
-        value: 1,
-      },
-    ],
+    questionContent: "Who was the first Disney princess?",
+    choiceA: "Snow White",
+    choiceB: "Cinderella",
+    choiceC: "Mr. Whalen",
+    correct: "A",
+    imgSrc: "",
   },
   {
-    questionContent: "What do you like to do in your free time:",
-    choices: [
-      {
-        choice1: "Play with my pets",
-        value: 5,
-      },
-      {
-        choice2: "Hang out with friends",
-        value: 3,
-      },
-      {
-        choice3: "Go for a nice drive",
-        value: 1,
-      },
-    ],
+    questionContent:
+      "What does the enchanted cake in Brave turn Merida's mother into?",
+    choiceA: "A bear",
+    choiceB: "A dog",
+    choiceC: "a cat",
+    correct: "A",
+    imgSrc: "",
   },
   {
-    questionContent: "Which of these outfits would you wear",
-    choices: [
-      {
-        choice1: "Dress or Suit",
-        value: 5,
-      },
-      {
-        choice2: "Fuzzy sweater",
-        value: 3,
-      },
-      {
-        choice3: "A tracksuit",
-        value: 1,
-      },
-    ],
+    questionContent: "What is the name of Goofy's son?",
+    choiceA: "Josh",
+    choiceB: "Max",
+    choiceC: "Sam",
+    correct: "B",
+    imgSrc: "",
   },
 ];
 
-const init = function () {
-  questions.forEach((question) =>
-    quizContainer.insertAdjacentHTML(
-      "beforeend",
-      `
-      <div id="question-container" class="hide">
-      <div id="question">${question.questionContent}</div>
-      <div id="answer-buttons" class="btn-grid">
-          <button class="first-choice btn">${question.choice1}</button>
-          <button class="second-choice btn">${question.choice2}</button>
-          <button class="third-choice btn">${question.choice3}</button>
-      </div>
-  </div>
-  <div class="controls">
-      <button id="next-btn" class="next-btn btn">Next</button>
-  `
-    )
-  );
-};
-init();
+// const init = function () {
+//   questions.forEach((question) =>
+//     quizContainer.insertAdjacentHTML(
+//       "beforeend",
+//       `
+//       <div id="question-container" class="hide">
+//       <div id="question">${question.questionContent}</div>
+//       <div id="answer-buttons" class="btn-grid">
+//           <button class="first-choice btn">${question.choice1}</button>
+//           <button class="second-choice btn">${question.choice2}</button>
+//           <button class="third-choice btn">${question.choice3}</button>
+//       </div>
+//   </div>
+//   <div class="controls">
+//       <button id="next-btn" class="next-btn btn">Next</button>
+//   `
+//     )
+//   );
+// };
