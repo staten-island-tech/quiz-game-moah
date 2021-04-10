@@ -11,13 +11,14 @@
 <body>
 <div id="start"> Start The Quiz!</div>
 <div id="container" > 
-    <div id="qImage"> <img src="" alt=""></div>
     <div id="question"> <p>Question</p> </div> 
+    <div id="qImage"> <img src="" alt=""></div>
         <div id="choices" class="btn-grid">
-            <button class="choice btn" id="A">Answer 1</button>
-            <button class="choice btn" id="B">Answer 2</button>
-            <button class="choice btn" id="C">Answer 3</button>
+            <button class="choice btn" id="A" onclick="checkAnswer('A')">Answer 1</button>
+            <button class="choice btn" id="B" onclick="checkAnswer('B')">Answer 2</button>
+            <button class="choice btn" id="C" onclick="checkAnswer('C')">Answer 3</button>
         </div>
+        <div id="progress"> <div class="prog"></div> </div>
     </div>
 <div id="scoreContainer"><h2>75%</h2></div>
 

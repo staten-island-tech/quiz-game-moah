@@ -6,6 +6,7 @@ const choiceB = document.getElementById("B");
 const choiceC = document.getElementById("C");
 const scoreContainer = document.getElementById("scoreContainer");
 const qImg = document.getElementById("qImage");
+const progress = document.getElementById("progress");
 
 const questions = [
   {
@@ -94,6 +95,13 @@ const questions = [
 
 const lastQuestion = questions.length - 1;
 const runningQuestion = 0;
+let score = 0;
+
+function startQuiz() {
+  start.style.display = "none";
+  renderQuestion();
+  container.style.display = "block";
+}
 
 function renderQuestion() {
   const q = questions[runningQuestion];
@@ -104,12 +112,37 @@ function renderQuestion() {
   choiceC.innerHTML = q.choiceC;
 }
 renderQuestion();
-
 start.addEventListener("click", startQuiz);
-function startQuiz() {
-  start.style.display = "none";
-  renderQuestion();
-  container.style.display = "block";
+
+function renderProgress() {
+  for (const qIndex = 0; qIndex <= lastQuestion; qIndex++) {
+    progress.innerHTML += "<div class='prog' id=" + qIndex + "></div>";
+  }
+}
+function answerIsCorrect() {
+  document.getElementById(runningQuestion).style.backgroundColor = "green";
+}
+function answerIsWrong() {
+  document.getElementById(runningQuestion).style.backgroundColor = "red";
+}
+
+function checkAnswer(answer) {
+  if (questions[runningQuestion].correct) {
+    score++;
+    answerIsCorrect();
+  } else {
+    answerIsWrong();
+  }
+  if (runningQuestion < lastQuestion) {
+    runningQuestion++;
+    questionRender();
+  } else {
+    scoreRender();
+  }
+}
+function scoreRender() {
+  scoreContainer.style.display = "block";
+  const scorePerCent = Math.round((100 * score) / questions.length);
 }
 // const init = function () {
 //   questions.forEach((question) =>
