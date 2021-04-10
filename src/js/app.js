@@ -7,8 +7,6 @@ const choiceC = document.getElementById("C");
 const scoreContainer = document.getElementById("scoreContainer");
 const qImg = document.getElementById("qImage");
 
-console.log(start);
-
 const questions = [
   {
     questionContent: "What year did Disneyland open?",
@@ -94,6 +92,25 @@ const questions = [
   },
 ];
 
+const lastQuestion = questions.length - 1;
+const runningQuestion = 0;
+
+function renderQuestion() {
+  const q = questions[runningQuestion];
+  qImg.innerHTML = "<img src=" + q.imgSrc + ">";
+  question.innerHTML = "<p>" + q.questionContent + "</p>";
+  choiceA.innerHTML = q.choiceA;
+  choiceB.innerHTML = q.choiceB;
+  choiceC.innerHTML = q.choiceC;
+}
+renderQuestion();
+
+start.addEventListener("click", startQuiz);
+function startQuiz() {
+  start.style.display = "none";
+  renderQuestion();
+  container.style.display = "block";
+}
 // const init = function () {
 //   questions.forEach((question) =>
 //     quizContainer.insertAdjacentHTML(
