@@ -31,11 +31,17 @@ body {
   background-color: rgba(0, 0, 0, 0.664);
   border-radius: 5px;
   padding: 6rem;
-  margin: 5rem;
+
   box-shadow: 0 0 10px 2px;
   font-size: 2rem;
   color: white;
   display: none;
+  margin: 20px auto;
+  height: 300px;
+  width: 700px;
+  border-radius: 5px;
+  box-shadow: 0px 5px 15px 0px;
+  position: relative;
 }
 
 .btn-grid {
@@ -70,16 +76,16 @@ body {
   text-align: right;
 }
 .prog {
-  width: 2rem;
-  height: 2rem;
-  border: 1px solid #000;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid rgb(255, 255, 255);
   display: inline-block;
   border-radius: 50%;
   margin-left: 5px;
   margin-right: 5px;
 }
 #scoreContainer {
-  margin: 2rem auto;
+  margin: 20px auto;
   background-color: white;
   opacity: 0.8;
   height: 30rem;
@@ -91,16 +97,16 @@ body {
 }
 #scoreContainer img {
   position: absolute;
-  top: 10rem;
-  left: 32.5rem;
+  top: 100px;
+  left: 325px;
 }
 #scoreContainer p {
   position: absolute;
   display: block;
-  width: 6rem;
-  height: 6rem;
-  top: 13rem;
-  left: 32.5rem;
+  width: 59px;
+  height: 59px;
+  top: 130px;
+  left: 325px;
   font-size: 1.5em;
   font-weight: bold;
   text-align: center;

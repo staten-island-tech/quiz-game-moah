@@ -93,32 +93,33 @@ const questions = [
   },
 ];
 
-const lastQuestion = questions.length - 1;
-const runningQuestion = 0;
-let score = 0;
+const lastQuestion = questions.length - 1; //index of the last question
+let runningQuestion = 0; //current questions index which will be changed by 1
+let score = 0; //starting score
 
 function startQuiz() {
-  start.style.display = "none";
-  renderQuestion();
-  container.style.display = "block";
+  start.style.display = "none"; // make the startQuiz container dissapear
+  renderQuestion(); // make the question appear on screen
+  container.style.display = "block"; //make the quiz container appear
 }
 
 function renderQuestion() {
-  const q = questions[runningQuestion];
-  qImg.innerHTML = "<img src=" + q.imgSrc + ">";
-  question.innerHTML = "<p>" + q.questionContent + "</p>";
+  const q = questions[runningQuestion]; //basically declaring a variable that has grabs the index of the running question from the questions array
+  qImg.innerHTML = "<img src=" + q.imgSrc + ">"; // adding images based on each index from the array
+  question.innerHTML = "<p>" + q.questionContent + "</p>"; //adding each question that is asked from the
   choiceA.innerHTML = q.choiceA;
   choiceB.innerHTML = q.choiceB;
   choiceC.innerHTML = q.choiceC;
 }
 renderQuestion();
-start.addEventListener("click", startQuiz);
+start.addEventListener("click", startQuiz); //listen for a click event on the startQuiz container and then this activates the startQuiz function
 
 function renderProgress() {
-  for (const qIndex = 0; qIndex <= lastQuestion; qIndex++) {
+  for (let qIndex = 0; qIndex <= lastQuestion; qIndex++) {
     progress.innerHTML += "<div class='prog' id=" + qIndex + "></div>";
   }
 }
+renderProgress();
 function answerIsCorrect() {
   document.getElementById(runningQuestion).style.backgroundColor = "green";
 }
@@ -135,14 +136,16 @@ function checkAnswer(answer) {
   }
   if (runningQuestion < lastQuestion) {
     runningQuestion++;
-    questionRender();
+    renderQuestion();
   } else {
     scoreRender();
   }
 }
+checkAnswer();
 function scoreRender() {
   scoreContainer.style.display = "block";
   const scorePerCent = Math.round((100 * score) / questions.length);
+  scoreContainer.innerHTML = "><p>" + scorePerCent + "%</p>";
 }
 // const init = function () {
 //   questions.forEach((question) =>
