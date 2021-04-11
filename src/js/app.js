@@ -1,126 +1,107 @@
 const start = document.getElementById("start");
 const quiz = document.getElementById("quiz");
 const question = document.getElementById("question");
-const qImg = document.getElementById("qImage");
+const qImg = document.getElementById("qImg");
 const choiceA = document.getElementById("A");
 const choiceB = document.getElementById("B");
 const choiceC = document.getElementById("C");
-const scoreDiv = document.getElementById("score");
+const counter = document.getElementById("counter");
+const timeGauge = document.getElementById("timeGauge");
 const progress = document.getElementById("progress");
+const scoreDiv = document.getElementById("scoreContainer");
 
-const questions = [
+// create our questions
+let questions = [
   {
-    question: "What year did Disneyland open?",
-    choiceA: "1960",
-    choiceB: "1940",
-    choiceC: "1955",
-    correct: "C",
-    imgSrc: "",
-  },
-  {
-    question: "Who trained Hercules to be a hero?",
-    choiceA: "Phil/Philoctetes",
-    choiceB: "Grover",
-    choiceC: "Apollo",
+    question: "What does HTML stand for?",
+    imgSrc: "img/html.png",
+    choiceA: "Correct",
+    choiceB: "Wrong",
+    choiceC: "Wrong",
     correct: "A",
-    imgSrc: "",
   },
   {
-    question: "What is the name of the toy store in Toy Story 2",
-    choiceA: "Al's Toy Barn",
-    choiceB: "Toys R Us",
-    choiceC: "Steve's Toy Shop",
-    correct: "A",
-    imgSrc: "",
-  },
-  {
-    question: "What are the names of Hades minions in Hercules?",
-    choiceA: "Disgust and Contempt",
-    choiceB: "Anger and Anxiety",
-    choiceC: "Pain and Panic",
-    correct: "C",
-    imgSrc: "",
-  },
-  {
-    question: "What is the name of Ariel and Prince Eric's daughter?",
-    choiceA: "Diana",
-    choiceB: "Melody",
-    choiceC: "Celeste",
+    question: "What does CSS stand for?",
+    imgSrc: "img/css.png",
+    choiceA: "Wrong",
+    choiceB: "Correct",
+    choiceC: "Wrong",
     correct: "B",
-    imgSrc: "",
   },
   {
-    question: "What's the name of Belle's father in 'Beauty and the Beast'?",
-    choiceA: "Timothy",
-    choiceB: "Diego",
-    choiceC: "Maurice",
+    question: "What does JS stand for?",
+    imgSrc: "img/js.png",
+    choiceA: "Wrong",
+    choiceB: "Wrong",
+    choiceC: "Correct",
     correct: "C",
-    imgSrc: "",
-  },
-  {
-    question: "What animal was Tarzan raised by?",
-    choiceA: "Wolves",
-    choiceB: "Bears",
-    choiceC: "Gorillas",
-    correct: "C",
-    imgSrc: "",
-  },
-  {
-    question: "Who was the first Disney princess?",
-    choiceA: "Snow White",
-    choiceB: "Cinderella",
-    choiceC: "Mr. Whalen",
-    correct: "A",
-    imgSrc: "",
-  },
-  {
-    question:
-      "What does the enchanted cake in Brave turn Merida's mother into?",
-    choiceA: "A bear",
-    choiceB: "A dog",
-    choiceC: "a cat",
-    correct: "A",
-    imgSrc: "",
-  },
-  {
-    question: "What is the name of Goofy's son?",
-    choiceA: "Josh",
-    choiceB: "Max",
-    choiceC: "Sam",
-    correct: "B",
-    imgSrc: "",
   },
 ];
 
-const lastQuestion = questions.length - 1; //index of the last question
-let runningQuestion = 0; //current questions index which will be changed by 1
-let quizScore = 0; //starting score
+// create some variables
 
+const lastQuestion = questions.length - 1;
+let runningQuestion = 0;
+let count = 0;
+const questionTime = 10; // 10s
+const gaugeWidth = 150; // 150px
+const gaugeUnit = gaugeWidth / questionTime;
+let TIMER;
+let score = 0;
+
+// render a question
 function renderQuestion() {
-  let q = questions[runningQuestion]; //basically declaring a variable that has grabs the index of the running question from the questions array
-  question.innerHTML = "<p>" + q.question + "</p>"; //adding each question that is asked from the
-  qImg.innerHTML = "<img src=" + q.imgSrc + ">"; // adding images based on each index from the array
+  let q = questions[runningQuestion];
+
+  question.innerHTML = "<p>" + q.question + "</p>";
+  qImg.innerHTML = "<img src=" + q.imgSrc + ">";
   choiceA.innerHTML = q.choiceA;
   choiceB.innerHTML = q.choiceB;
   choiceC.innerHTML = q.choiceC;
 }
 
-start.addEventListener("click", startQuiz); //listen for a click event on the startQuiz container and then this activates the startQuiz function
+start.addEventListener("click", startQuiz);
 
+// start quiz
 function startQuiz() {
-  start.style.display = "none"; // make the startQuiz container dissapear
-  renderQuestion(); // make the question appear on screen
-  quiz.style.display = "block"; //make the quiz container appear
-  renderProgress(); // make the progress circles appear
+  start.style.display = "none";
+  renderQuestion();
+  quiz.style.display = "block";
+  renderProgress();
+  renderCounter();
+  TIMER = setInterval(renderCounter, 1000); // 1000ms = 1s
 }
 
-console.log(questions.length);
-
+// render progress
 function renderProgress() {
   for (let qIndex = 0; qIndex <= lastQuestion; qIndex++) {
     progress.innerHTML += "<div class='prog' id=" + qIndex + "></div>";
   }
 }
+
+// counter render
+
+function renderCounter() {
+  if (count <= questionTime) {
+    counter.innerHTML = count;
+    timeGauge.style.width = count * gaugeUnit + "px";
+    count++;
+  } else {
+    count = 0;
+    // change progress color to red
+    answerIsWrong();
+    if (runningQuestion < lastQuestion) {
+      runningQuestion++;
+      renderQuestion();
+    } else {
+      // end the quiz and show the score
+      clearInterval(TIMER);
+      scoreRender();
+    }
+  }
+}
+
+// checkAnwer
 
 function checkAnswer(answer) {
   if (answer == questions[runningQuestion].correct) {
@@ -133,13 +114,13 @@ function checkAnswer(answer) {
     // change progress color to red
     answerIsWrong();
   }
-
+  count = 0;
   if (runningQuestion < lastQuestion) {
     runningQuestion++;
     renderQuestion();
   } else {
     // end the quiz and show the score
-
+    clearInterval(TIMER);
     scoreRender();
   }
 }
@@ -162,27 +143,17 @@ function scoreRender() {
   const scorePerCent = Math.round((100 * score) / questions.length);
 
   // choose the image based on the scorePerCent
+  let img =
+    scorePerCent >= 80
+      ? "img/5.png"
+      : scorePerCent >= 60
+      ? "img/4.png"
+      : scorePerCent >= 40
+      ? "img/3.png"
+      : scorePerCent >= 20
+      ? "img/2.png"
+      : "img/1.png";
 
   scoreDiv.innerHTML = "<img src=" + img + ">";
   scoreDiv.innerHTML += "<p>" + scorePerCent + "%</p>";
 }
-
-// const init = function () {
-//   questions.forEach((question) =>
-//     quizContainer.insertAdjacentHTML(
-//       "beforeend",
-//       `
-//       <div id="question-container" class="hide">
-//       <div id="question">${question.question}</div>
-//       <div id="answer-buttons" class="btn-grid">
-//           <button class="first-choice btn">${question.choice1}</button>
-//           <button class="second-choice btn">${question.choice2}</button>
-//           <button class="third-choice btn">${question.choice3}</button>
-//       </div>
-//   </div>
-//   <div class="controls">
-//       <button id="next-btn" class="next-btn btn">Next</button>
-//   `
-//     )
-//   );
-// };
