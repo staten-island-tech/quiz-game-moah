@@ -1,16 +1,16 @@
-const quizContainer = document.getElementsByClassName("container");
 const start = document.getElementById("start");
+const quiz = document.getElementById("quiz");
 const question = document.getElementById("question");
+const qImg = document.getElementById("qImage");
 const choiceA = document.getElementById("A");
 const choiceB = document.getElementById("B");
 const choiceC = document.getElementById("C");
-const scoreContainer = document.getElementById("scoreContainer");
-const qImg = document.getElementById("qImage");
+const scoreDiv = document.getElementById("score");
 const progress = document.getElementById("progress");
 
 const questions = [
   {
-    questionContent: "What year did Disneyland open?",
+    question: "What year did Disneyland open?",
     choiceA: "1960",
     choiceB: "1940",
     choiceC: "1955",
@@ -18,7 +18,7 @@ const questions = [
     imgSrc: "",
   },
   {
-    questionContent: "Who trained Hercules to be a hero?",
+    question: "Who trained Hercules to be a hero?",
     choiceA: "Phil/Philoctetes",
     choiceB: "Grover",
     choiceC: "Apollo",
@@ -26,7 +26,7 @@ const questions = [
     imgSrc: "",
   },
   {
-    questionContent: "What is the name of the toy store in Toy Story 2",
+    question: "What is the name of the toy store in Toy Story 2",
     choiceA: "Al's Toy Barn",
     choiceB: "Toys R Us",
     choiceC: "Steve's Toy Shop",
@@ -34,7 +34,7 @@ const questions = [
     imgSrc: "",
   },
   {
-    questionContent: "What are the names of Hades minions in Hercules?",
+    question: "What are the names of Hades minions in Hercules?",
     choiceA: "Disgust and Contempt",
     choiceB: "Anger and Anxiety",
     choiceC: "Pain and Panic",
@@ -42,7 +42,7 @@ const questions = [
     imgSrc: "",
   },
   {
-    questionContent: "What is the name of Ariel and Prince Eric's daughter?",
+    question: "What is the name of Ariel and Prince Eric's daughter?",
     choiceA: "Diana",
     choiceB: "Melody",
     choiceC: "Celeste",
@@ -50,8 +50,7 @@ const questions = [
     imgSrc: "",
   },
   {
-    questionContent:
-      "What's the name of Belle's father in 'Beauty and the Beast'?",
+    question: "What's the name of Belle's father in 'Beauty and the Beast'?",
     choiceA: "Timothy",
     choiceB: "Diego",
     choiceC: "Maurice",
@@ -59,7 +58,7 @@ const questions = [
     imgSrc: "",
   },
   {
-    questionContent: "What animal was Tarzan raised by?",
+    question: "What animal was Tarzan raised by?",
     choiceA: "Wolves",
     choiceB: "Bears",
     choiceC: "Gorillas",
@@ -67,7 +66,7 @@ const questions = [
     imgSrc: "",
   },
   {
-    questionContent: "Who was the first Disney princess?",
+    question: "Who was the first Disney princess?",
     choiceA: "Snow White",
     choiceB: "Cinderella",
     choiceC: "Mr. Whalen",
@@ -75,7 +74,7 @@ const questions = [
     imgSrc: "",
   },
   {
-    questionContent:
+    question:
       "What does the enchanted cake in Brave turn Merida's mother into?",
     choiceA: "A bear",
     choiceB: "A dog",
@@ -84,7 +83,7 @@ const questions = [
     imgSrc: "",
   },
   {
-    questionContent: "What is the name of Goofy's son?",
+    question: "What is the name of Goofy's son?",
     choiceA: "Josh",
     choiceB: "Max",
     choiceC: "Sam",
@@ -95,65 +94,86 @@ const questions = [
 
 const lastQuestion = questions.length - 1; //index of the last question
 let runningQuestion = 0; //current questions index which will be changed by 1
-let score = 0; //starting score
-
-function startQuiz() {
-  start.style.display = "none"; // make the startQuiz container dissapear
-  renderQuestion(); // make the question appear on screen
-  container.style.display = "block"; //make the quiz container appear
-}
+let quizScore = 0; //starting score
 
 function renderQuestion() {
-  const q = questions[runningQuestion]; //basically declaring a variable that has grabs the index of the running question from the questions array
+  let q = questions[runningQuestion]; //basically declaring a variable that has grabs the index of the running question from the questions array
+  question.innerHTML = "<p>" + q.question + "</p>"; //adding each question that is asked from the
   qImg.innerHTML = "<img src=" + q.imgSrc + ">"; // adding images based on each index from the array
-  question.innerHTML = "<p>" + q.questionContent + "</p>"; //adding each question that is asked from the
   choiceA.innerHTML = q.choiceA;
   choiceB.innerHTML = q.choiceB;
   choiceC.innerHTML = q.choiceC;
 }
-renderQuestion();
+
 start.addEventListener("click", startQuiz); //listen for a click event on the startQuiz container and then this activates the startQuiz function
+
+function startQuiz() {
+  start.style.display = "none"; // make the startQuiz container dissapear
+  renderQuestion(); // make the question appear on screen
+  quiz.style.display = "block"; //make the quiz container appear
+  renderProgress(); // make the progress circles appear
+}
+
+console.log(questions.length);
 
 function renderProgress() {
   for (let qIndex = 0; qIndex <= lastQuestion; qIndex++) {
     progress.innerHTML += "<div class='prog' id=" + qIndex + "></div>";
   }
 }
-renderProgress();
-function answerIsCorrect() {
-  document.getElementById(runningQuestion).style.backgroundColor = "green";
-}
-function answerIsWrong() {
-  document.getElementById(runningQuestion).style.backgroundColor = "red";
-}
 
 function checkAnswer(answer) {
-  if (questions[runningQuestion].correct) {
+  if (answer == questions[runningQuestion].correct) {
+    // answer is correct
     score++;
+    // change progress color to green
     answerIsCorrect();
   } else {
+    // answer is wrong
+    // change progress color to red
     answerIsWrong();
   }
+
   if (runningQuestion < lastQuestion) {
     runningQuestion++;
     renderQuestion();
   } else {
+    // end the quiz and show the score
+
     scoreRender();
   }
 }
-checkAnswer();
-function scoreRender() {
-  scoreContainer.style.display = "block";
-  const scorePerCent = Math.round((100 * score) / questions.length);
-  scoreContainer.innerHTML = "><p>" + scorePerCent + "%</p>";
+
+// answer is correct
+function answerIsCorrect() {
+  document.getElementById(runningQuestion).style.backgroundColor = "#0f0";
 }
+
+// answer is Wrong
+function answerIsWrong() {
+  document.getElementById(runningQuestion).style.backgroundColor = "#f00";
+}
+
+// score render
+function scoreRender() {
+  scoreDiv.style.display = "block";
+
+  // calculate the amount of question percent answered by the user
+  const scorePerCent = Math.round((100 * score) / questions.length);
+
+  // choose the image based on the scorePerCent
+
+  scoreDiv.innerHTML = "<img src=" + img + ">";
+  scoreDiv.innerHTML += "<p>" + scorePerCent + "%</p>";
+}
+
 // const init = function () {
 //   questions.forEach((question) =>
 //     quizContainer.insertAdjacentHTML(
 //       "beforeend",
 //       `
 //       <div id="question-container" class="hide">
-//       <div id="question">${question.questionContent}</div>
+//       <div id="question">${question.question}</div>
 //       <div id="answer-buttons" class="btn-grid">
 //           <button class="first-choice btn">${question.choice1}</button>
 //           <button class="second-choice btn">${question.choice2}</button>
