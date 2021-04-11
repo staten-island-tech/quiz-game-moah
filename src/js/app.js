@@ -125,7 +125,7 @@ function renderProgress() {
 function checkAnswer(answer) {
   if (answer == questions[runningQuestion].correct) {
     // answer is correct
-    score++;
+    quizScore++;
     // change progress color to green
     answerIsCorrect();
   } else {
@@ -141,6 +141,7 @@ function checkAnswer(answer) {
     // end the quiz and show the score
 
     scoreRender();
+    clearInterval(quiz);
   }
 }
 
@@ -159,12 +160,12 @@ function scoreRender() {
   scoreDiv.style.display = "block";
 
   // calculate the amount of question percent answered by the user
-  const scorePerCent = Math.round((100 * score) / questions.length);
+  const scorePerCent = Math.round((100 * quizScore) / questions.length);
 
   // choose the image based on the scorePerCent
 
-  scoreDiv.innerHTML = "<img src=" + img + ">";
-  scoreDiv.innerHTML += "<p>" + scorePerCent + "%</p>";
+  scoreDiv.innerHTML =
+    "<p> You got " + scorePerCent + "% To retake, reload the page! !!!</p>";
 }
 
 // const init = function () {
