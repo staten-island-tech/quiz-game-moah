@@ -130,8 +130,8 @@ function renderProgress() {
   }
 }
 
-function checkAnswer(answer) {
-  if (answer == questions[runningQuestion].correct) {
+function checkAnswer(event) {
+  if (event.target.id === questions[runningQuestion].correct) {
     // answer is correct
     quizScore++;
     // change progress color to green
