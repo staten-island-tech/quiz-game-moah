@@ -1,6 +1,6 @@
 console.log("Connected");
 
-[
+/* [
   {
     questionContent: "Are you more independent or dependent?",
     choices: [
@@ -48,4 +48,6 @@ console.log("Connected");
       },
     ],
   },
-];
+]; */
+
+import { questions } from "./questions";
