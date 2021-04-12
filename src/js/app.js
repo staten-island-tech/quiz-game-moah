@@ -113,7 +113,7 @@ function renderQuestion() {
   choiceC.innerHTML = q.choiceC;
 }
 
-start.addEventListener("click", startQuiz); //listen for a click event on the startQuiz container and then this activates the startQuiz function
+//listen for a click event on the startQuiz container and then this activates the startQuiz function
 
 function startQuiz() {
   start.style.display = "none"; // make the startQuiz container dissapear
@@ -121,7 +121,7 @@ function startQuiz() {
   quiz.style.display = "block"; //make the quiz container appear
   renderProgress(); // make the progress circles appear
 }
-
+start.addEventListener("click", startQuiz);
 console.log(questions.length);
 
 function renderProgress() {
