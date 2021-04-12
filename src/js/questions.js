@@ -1,4 +1,4 @@
-const questions = [
+/* const questions = [
   {
     question: "What year did Disneyland open?",
     choiceA: "1960",
@@ -80,4 +80,4 @@ const questions = [
     correct: "B",
     imgSrc: "",
   },
-];
+]; */
