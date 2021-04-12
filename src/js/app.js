@@ -176,6 +176,9 @@ function scoreRender() {
     "<p> You got " + scorePerCent + "% To retake, reload the page! !!!</p>";
 }
 
+choiceA.addEventListener("click", checkAnswer);
+choiceB.addEventListener("click", checkAnswer);
+choiceC.addEventListener("click", checkAnswer);
 // const init = function () {
 //   questions.forEach((question) =>
 //     quizContainer.insertAdjacentHTML(
