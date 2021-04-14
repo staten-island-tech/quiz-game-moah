@@ -1,72 +1,123 @@
-/* html,
 body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-size: 62.5%;
-  background-color: burlywood;
-  background-image: url();
-}
-.title {
-  margin: auto;
-  //background-color: white;
-  width: 50%;
-  text-align: center;
-  font-size: 5rem;
-}
-#start {
-  font-size: 2rem;
-  margin: auto;
-} */
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-body {
+  font-size: 20px;
+  font-family: monospace;
+  background-image: url(../img/largedisneycastle.jpeg);
+  background-size: cover;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  background-repeat: no-repeat;
   padding: 0;
   margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* width: 100vh;
-  height: 100vh; */
-  /* background-color: purple; */
-  background-image: url(img/largedisneycastle.jpeg);
-  background-size: cover;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
-
-.container {
-  /* width: 800px;
-  max-width: 80%; */
-  background-color: transparent;
+#start {
+  font-size: 5rem;
+  background-color: rgb(206, 73, 73);
+  border-radius: 1rem;
+  padding: 6rem;
+  text-align: center;
+  margin: 0rem auto;
+  transition: all 0.5s;
+  height: 10rem;
+  width: 20rem;
+}
+#start:hover {
+  filter: hue-rotate(120deg);
+  transform: scale(1.2);
+}
+#container {
+  background-color: rgba(0, 0, 0, 0.705);
   border-radius: 5px;
-  padding: 80px;
+  padding: 6rem;
   box-shadow: 0 0 10px 2px;
+  font-size: 2rem;
+  color: white;
+
+  margin: 20px auto;
+  height: 20rem;
+  width: 50rem;
+  border-radius: 5px;
+  box-shadow: 0px 5px 1.5rem 0px;
+  position: relative;
+}
+#quiz {
+  font-size: 2rem;
+  color: white;
+  display: none;
 }
 
 .btn-grid {
   display: grid;
-  grid-template-columns: repeat(2, auto);
-  gap: 30px;
-  margin: 50px 0;
+  grid-template-columns: repeat(3, auto);
+  gap: 2rem;
+  margin: 2rem 0;
 }
 
 .btn {
+  color: black;
+  transition: all 0.5s;
   background-color: white;
-  border-radius: 10px;
-  padding: 15px;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  font-size: 2rem;
+}
+.btn:hover {
+  transform: scale(1.2);
 }
 
-.controls {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+#progress {
+  width: 50rem;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  padding: 5px;
+  text-align: right;
 }
-
-/* .hide {
+.prog {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid rgb(255, 255, 255);
+  display: inline-block;
+  border-radius: 50%;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+#score {
+  margin: 20px auto;
+  background-color: white;
+  opacity: 0.9;
+  height: 30rem;
+  width: 62.5rem;
+  border-radius: 5px;
+  box-shadow: 0px 5px 15px 0px;
+  position: relative;
   display: none;
-} */
+  top: -350px;
+
+  margin-left: -100px;
+}
+#score img {
+  position: absolute;
+  top: 100px;
+  left: 325px;
+}
+#score p {
+  position: absolute;
+  display: block;
+
+  height: 59px;
+  top: 110px;
+
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+  color: black;
+}
+
+.reset {
+  display: none;
+}
+#answers {
+  display: none;
+}
