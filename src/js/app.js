@@ -9,6 +9,31 @@ xyz.sayQuestions();
 
 const questions = [
   {
+    question: "What animal was Tarzan raised by?",
+    choiceA: "Wolves",
+    choiceB: "Bears",
+    choiceC: "Gorillas",
+    correct: "C",
+    imgSrc: "",
+  },
+  {
+    question: "Who was the first Disney princess?",
+    choiceA: "Snow White",
+    choiceB: "Cinderella",
+    choiceC: "Mr. Whalen",
+    correct: "A",
+    imgSrc: "",
+  },
+  {
+    question:
+      "What does the enchanted cake in Brave turn Merida's mother into?",
+    choiceA: "A bear",
+    choiceB: "A wolf",
+    choiceC: "a horse",
+    correct: "A",
+    imgSrc: "",
+  },
+  {
     question: "What year did Disneyland open?",
     choiceA: "1960",
     choiceB: "1940",
@@ -34,8 +59,8 @@ const questions = [
   },
   {
     question: "What are the names of Hades minions in Hercules?",
-    choiceA: "Disgust and Contempt",
-    choiceB: "Anger and Anxiety",
+    choiceA: "Anger and Pain",
+    choiceB: "Anger and Panic",
     choiceC: "Pain and Panic",
     correct: "C",
     imgSrc: "",
@@ -44,43 +69,19 @@ const questions = [
     question: "What is the name of Ariel and Prince Eric's daughter?",
     choiceA: "Diana",
     choiceB: "Melody",
-    choiceC: "Celeste",
+    choiceC: "Symphony",
     correct: "B",
     imgSrc: "",
   },
   {
     question: "What's the name of Belle's father in 'Beauty and the Beast'?",
-    choiceA: "Timothy",
-    choiceB: "Diego",
+    choiceA: "Louise",
+    choiceB: "Gustave",
     choiceC: "Maurice",
     correct: "C",
     imgSrc: "",
   },
-  {
-    question: "What animal was Tarzan raised by?",
-    choiceA: "Wolves",
-    choiceB: "Bears",
-    choiceC: "Gorillas",
-    correct: "C",
-    imgSrc: "",
-  },
-  {
-    question: "Who was the first Disney princess?",
-    choiceA: "Snow White",
-    choiceB: "Cinderella",
-    choiceC: "Mr. Whalen",
-    correct: "A",
-    imgSrc: "",
-  },
-  {
-    question:
-      "What does the enchanted cake in Brave turn Merida's mother into?",
-    choiceA: "A bear",
-    choiceB: "A dog",
-    choiceC: "a cat",
-    correct: "A",
-    imgSrc: "",
-  },
+
   {
     question: "What is the name of Goofy's son?",
     choiceA: "Josh",
@@ -173,9 +174,12 @@ function scoreRender() {
   // choose the image based on the scorePerCent
 
   scoreDiv.innerHTML =
-    "<p> You got " + scorePerCent + "%!!! To retake, reload the page!!!</p>";
+    "<p> You got " +
+    scorePerCent +
+    "%!!! To retake, click the Reset Button!</p>";
 }
 
+function answerRender() {}
 choiceA.addEventListener("click", checkAnswer);
 choiceB.addEventListener("click", checkAnswer);
 choiceC.addEventListener("click", checkAnswer);
