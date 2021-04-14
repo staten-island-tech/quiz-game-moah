@@ -173,7 +173,7 @@ function scoreRender() {
   // choose the image based on the scorePerCent
 
   scoreDiv.innerHTML =
-    "<p> You got " + scorePerCent + "% To retake, reload the page! !!!</p>";
+    "<p> You got " + scorePerCent + "%!!! To retake, reload the page!!!</p>";
 }
 
 choiceA.addEventListener("click", checkAnswer);
