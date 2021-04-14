@@ -100,6 +100,9 @@ const choiceB = document.getElementById("B");
 const choiceC = document.getElementById("C");
 const scoreDiv = document.getElementById("score");
 const progress = document.getElementById("progress");
+const resetButton = document.getElementById("reset");
+const getAnswer = document.getElementById("answers-button");
+const answerList = document.getElementById("answers");
 
 const lastQuestion = questions.length - 1; //index of the last question
 let runningQuestion = 0; //current questions index which will be changed by 1
@@ -167,7 +170,8 @@ function answerIsWrong() {
 // score render
 function scoreRender() {
   scoreDiv.style.display = "block";
-
+  resetButton.style.display = "grid";
+  getAnswer.style.display = "grid";
   // calculate the amount of question percent answered by the user
   const scorePerCent = Math.round((100 * quizScore) / questions.length);
 
@@ -176,13 +180,20 @@ function scoreRender() {
   scoreDiv.innerHTML =
     "<p> You got " +
     scorePerCent +
-    "%!!! To retake, click the Reset Button!</p>";
+    "%!!! To retake, click the Reset Button! To look at the right answers press the Answers button and scroll down</p>";
 }
-
-function answerRender() {}
+function refreshPage() {
+  window.location.reload();
+}
+function answerRender() {
+  getAnswer.style.display = "none";
+  answerList.style.display = "block";
+}
 choiceA.addEventListener("click", checkAnswer);
 choiceB.addEventListener("click", checkAnswer);
 choiceC.addEventListener("click", checkAnswer);
+resetButton.addEventListener("click", refreshPage);
+getAnswer.addEventListener("click", answerRender);
 // const init = function () {
 //   questions.forEach((question) =>
 //     quizContainer.insertAdjacentHTML(
