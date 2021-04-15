@@ -1,12 +1,4 @@
-/* module.exports.sayQuestions = function () {
-  console.log("Questions");
-}; */
-
-/* let questions = require("./questions");
-
-xyz.sayQuestions();
- */
-
+/* import { questions } from "./app"; */
 const questions = [
   {
     question: "What animal was Tarzan raised by?",
@@ -14,7 +6,7 @@ const questions = [
     choiceB: "Bears",
     choiceC: "Gorillas",
     correct: "C",
-    imgSrc: "",
+    imgSrc: "/* img/question7image.jpeg */",
   },
   {
     question: "Who was the first Disney princess?",
@@ -22,7 +14,7 @@ const questions = [
     choiceB: "Cinderella",
     choiceC: "Mr. Whalen",
     correct: "A",
-    imgSrc: "",
+    imgSrc: "/* img/question8image.png */",
   },
   {
     question:
@@ -31,7 +23,7 @@ const questions = [
     choiceB: "A wolf",
     choiceC: "a horse",
     correct: "A",
-    imgSrc: "",
+    imgSrc: "/* img/question9image.jpeg */",
   },
   {
     question: "What year did Disneyland open?",
@@ -39,7 +31,7 @@ const questions = [
     choiceB: "1940",
     choiceC: "1955",
     correct: "C",
-    imgSrc: "",
+    imgSrc: "/* img/question1image.jpeg */",
   },
   {
     question: "Who trained Hercules to be a hero?",
@@ -47,7 +39,7 @@ const questions = [
     choiceB: "Grover",
     choiceC: "Apollo",
     correct: "A",
-    imgSrc: "",
+    imgSrc: "/* img/question2image.jpeg */",
   },
   {
     question: "What is the name of the toy store in Toy Story 2",
@@ -55,7 +47,7 @@ const questions = [
     choiceB: "Toys R Us",
     choiceC: "Steve's Toy Shop",
     correct: "A",
-    imgSrc: "",
+    imgSrc: "/* img/question3image.jpeg */",
   },
   {
     question: "What are the names of Hades minions in Hercules?",
@@ -63,7 +55,7 @@ const questions = [
     choiceB: "Anger and Panic",
     choiceC: "Pain and Panic",
     correct: "C",
-    imgSrc: "",
+    imgSrc: "/* img/question4image.jpeg */",
   },
   {
     question: "What is the name of Ariel and Prince Eric's daughter?",
@@ -71,7 +63,7 @@ const questions = [
     choiceB: "Melody",
     choiceC: "Symphony",
     correct: "B",
-    imgSrc: "",
+    imgSrc: "/* img/question5image.jpeg */",
   },
   {
     question: "What's the name of Belle's father in 'Beauty and the Beast'?",
@@ -79,7 +71,7 @@ const questions = [
     choiceB: "Gustave",
     choiceC: "Maurice",
     correct: "C",
-    imgSrc: "",
+    imgSrc: "/* img/question6image.jpg */",
   },
 
   {
@@ -88,7 +80,7 @@ const questions = [
     choiceB: "Max",
     choiceC: "Sam",
     correct: "B",
-    imgSrc: "",
+    imgSrc: "/* img/question10image.jpeg */",
   },
 ];
 const start = document.getElementById("start");
