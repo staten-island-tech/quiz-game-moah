@@ -174,13 +174,16 @@ function scoreRender() {
     scorePerCent +
     "%!!! To retake, click the Reset Button! To look at the right answers press the Answers button and scroll down</p>";
 }
+
 function refreshPage() {
   window.location.reload();
 }
+
 function answerRender() {
   getAnswer.style.display = "none";
   answerList.style.display = "block";
 }
+
 choiceA.addEventListener("click", checkAnswer);
 choiceB.addEventListener("click", checkAnswer);
 choiceC.addEventListener("click", checkAnswer);
