@@ -1,17 +1,18 @@
 import { questions } from "./questions";
-
-const start = document.getElementById("start");
-const quiz = document.getElementById("quiz");
-const question = document.getElementById("question");
-const qImg = document.getElementById("qImage");
-const choiceA = document.getElementById("A");
-const choiceB = document.getElementById("B");
-const choiceC = document.getElementById("C");
-const scoreDiv = document.getElementById("score");
-const progress = document.getElementById("progress");
-const resetButton = document.getElementById("reset");
-const getAnswer = document.getElementById("answers-button");
-const answerList = document.getElementById("answers");
+import {
+  start,
+  quiz,
+  question,
+  qImg,
+  choiceA,
+  choiceB,
+  choiceC,
+  scoreDiv,
+  progress,
+  resetButton,
+  getAnswer,
+  answerList,
+} from "./questions";
 
 const lastQuestion = questions.length - 1; //index of the last question
 let runningQuestion = 0; //current questions index which will be changed by 1
@@ -106,22 +107,3 @@ choiceB.addEventListener("click", checkAnswer);
 choiceC.addEventListener("click", checkAnswer);
 resetButton.addEventListener("click", refreshPage);
 getAnswer.addEventListener("click", answerRender);
-// const init = function () {
-//   questions.forEach((question) =>
-//     quizContainer.insertAdjacentHTML(
-//       "beforeend",
-//       `
-//       <div id="question-container" class="hide">
-//       <div id="question">${question.question}</div>
-//       <div id="answer-buttons" class="btn-grid">
-//           <button class="first-choice btn">${question.choice1}</button>
-//           <button class="second-choice btn">${question.choice2}</button>
-//           <button class="third-choice btn">${question.choice3}</button>
-//       </div>
-//   </div>
-//   <div class="controls">
-//       <button id="next-btn" class="next-btn btn">Next</button>
-//   `
-//     )
-//   );
-// };

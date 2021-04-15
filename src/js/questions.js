@@ -82,5 +82,30 @@ const questions = [
     imgSrc: "",
   },
 ];
-
+const start = document.getElementById("start");
+const quiz = document.getElementById("quiz");
+const question = document.getElementById("question");
+const qImg = document.getElementById("qImage");
+const choiceA = document.getElementById("A");
+const choiceB = document.getElementById("B");
+const choiceC = document.getElementById("C");
+const scoreDiv = document.getElementById("score");
+const progress = document.getElementById("progress");
+const resetButton = document.getElementById("reset");
+const getAnswer = document.getElementById("answers-button");
+const answerList = document.getElementById("answers");
 export { questions };
+export {
+  start,
+  quiz,
+  question,
+  qImg,
+  choiceA,
+  choiceB,
+  choiceC,
+  scoreDiv,
+  progress,
+  resetButton,
+  getAnswer,
+  answerList,
+};
