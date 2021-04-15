@@ -1,4 +1,4 @@
-/* const questions = [
+const questions = [
   {
     question: "What animal was Tarzan raised by?",
     choiceA: "Wolves",
@@ -81,6 +81,6 @@
     correct: "B",
     imgSrc: "",
   },
-]; */
+];
 
-/* export { questions }; */
+export { questions };
