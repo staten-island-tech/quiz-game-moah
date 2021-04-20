@@ -19,8 +19,8 @@ let runningQuestion = 0; //current questions index which will be changed by 1
 let quizScore = 0; //starting score
 
 function renderQuestion() {
-  let q = questions[runningQuestion]; //basically declaring a variable that has grabs the index of the running question from the questions array
-  question.innerHTML = "<p>" + q.question + "</p>"; //adding each question that is asked from the
+  let q = questions[runningQuestion]; //basically declaring a variable that grabs the index of the running question from the questions array
+  question.innerHTML = "<p>" + q.question + "</p>"; //showing each question on screen based on the index of the current question. yes this is bad practice since two variables are the same, im sorry.
   qImg.innerHTML = "<img src=" + q.imgSrc + ">"; // adding images based on each index from the array
   choiceA.innerHTML = q.choiceA;
   choiceB.innerHTML = q.choiceB;
@@ -35,57 +35,56 @@ function startQuiz() {
   quiz.style.display = "block"; //make the quiz container appear
   renderProgress(); // make the progress circles appear
 }
-start.addEventListener("click", startQuiz);
-console.log(questions.length);
+start.addEventListener("click", startQuiz); //listen for click then run the startQuiz function
 
 function renderProgress() {
   for (let qIndex = 0; qIndex <= lastQuestion; qIndex++) {
-    progress.innerHTML += "<div class='prog' id=" + qIndex + "></div>";
+    //let the qIndex equal zero, if the qIndex is less than the lastquestion index then add 1 to qIndex. this loops and creates progress circles for each question
+    progress.innerHTML += "<div class='prog' id=" + qIndex + "></div>"; //creates circles for each of the 10 questions, there will be 10 qIndexs since its in a for loop.
   }
 }
 
 function checkAnswer(event) {
   if (event.target.id === questions[runningQuestion].correct) {
-    // answer is correct
+    // if the id of the question.correct is equal to what the user clicks on then...
+    // the answer is correct and add 1 to quizScore
     quizScore++;
-    // change progress color to green
+    // change progress color to green by running answerisCorrect function
     answerIsCorrect();
   } else {
-    // answer is wrong
-    // change progress color to red
+    // if the user click id is not equal to the right answer, the answer is wrong
+    // change progress color to red by running answerIsWrong function
     answerIsWrong();
   }
 
   if (runningQuestion < lastQuestion) {
-    runningQuestion++;
-    renderQuestion();
+    // this is to check whether we are done with the quiz. if the runningQuestion index is less than lastQuestion index then...
+    runningQuestion++; //add one to runningQuestion index
+    renderQuestion(); //render the next question by running the renderQuestion function
   } else {
-    // end the quiz and show the score
+    //if the inequality is false then we end the quiz and display the score by running the scoreRender function
 
     scoreRender();
-    clearInterval(quiz);
   }
 }
 
 // answer is correct
 function answerIsCorrect() {
-  document.getElementById(runningQuestion).style.backgroundColor = "#0f0";
+  document.getElementById(runningQuestion).style.backgroundColor = "#0f0"; //get the id of the progress circle based on the runningQuestion index and change its color to green if its right
 }
 
 // answer is Wrong
 function answerIsWrong() {
-  document.getElementById(runningQuestion).style.backgroundColor = "#f00";
+  document.getElementById(runningQuestion).style.backgroundColor = "#f00"; //get the id of the progress circle based on the runningQuestion index and change its color to red if its wrong
 }
 
 // score render
 function scoreRender() {
-  scoreDiv.style.display = "block";
-  resetButton.style.display = "grid";
-  getAnswer.style.display = "grid";
+  scoreDiv.style.display = "block"; //change display from none to block when you run the function
+  resetButton.style.display = "grid"; // just something to make the button placement easier
+  getAnswer.style.display = "grid"; //getAnswer button placement to grid
   // calculate the amount of question percent answered by the user
-  const scorePerCent = Math.round((100 * quizScore) / questions.length);
-
-  // choose the image based on the scorePerCent
+  const scorePerCent = Math.round((100 * quizScore) / questions.length); //calculate the user score percentage to display
 
   scoreDiv.innerHTML =
     "<p> You got " +
@@ -95,15 +94,15 @@ function scoreRender() {
 
 function refreshPage() {
   window.location.reload();
-}
+} //function that refreshes the page
 
 function answerRender() {
   getAnswer.style.display = "none";
   answerList.style.display = "block";
-}
+} //make the button dissapear and the asnwer list appear
 
 choiceA.addEventListener("click", checkAnswer);
 choiceB.addEventListener("click", checkAnswer);
 choiceC.addEventListener("click", checkAnswer);
-resetButton.addEventListener("click", refreshPage);
-getAnswer.addEventListener("click", answerRender);
+resetButton.addEventListener("click", refreshPage); //on click refresh the page
+getAnswer.addEventListener("click", answerRender); // on click make the button dissapear and show the answers
