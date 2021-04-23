@@ -15,7 +15,7 @@ import {
 } from "./questions";
 
 const lastQuestion = questions.length - 1; //index of the last question
-let runningQuestion = 0; //current questions index which will be changed by 1
+let runningQuestion = 0; //current questions index which will be incremented by 1
 let quizScore = 0; //starting score
 
 function renderQuestion() {
@@ -31,15 +31,15 @@ function renderQuestion() {
 
 function startQuiz() {
   start.style.display = "none"; // make the startQuiz container dissapear
-  renderQuestion(); // make the question appear on screen
+  renderQuestion(); // run renderQuestion function, makes the question appear on screen
   quiz.style.display = "block"; //make the quiz container appear
-  renderProgress(); // make the progress circles appear
+  renderProgress(); // make the progress circles appear by running renderProgress function
 }
 start.addEventListener("click", startQuiz); //listen for click then run the startQuiz function
 
 function renderProgress() {
   for (let qIndex = 0; qIndex <= lastQuestion; qIndex++) {
-    //let the qIndex equal zero, if the qIndex is less than the lastquestion index then add 1 to qIndex. this loops and creates progress circles for each question
+    //let the qIndex equal zero, if the qIndex is less than the last question index then add 1 to qIndex. this loops and creates progress circles for each question until the qIndex is equal to lastQuestion index
     progress.innerHTML += "<div class='prog' id=" + qIndex + "></div>"; //creates circles for each of the 10 questions, there will be 10 qIndexs since its in a for loop.
   }
 }
